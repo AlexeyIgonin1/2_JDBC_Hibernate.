@@ -18,39 +18,61 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public void createUsersTable() {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-        try {
+
+        try(Session session = sessionFactory.openSession()){
+            Transaction transaction = session.beginTransaction();
             session.createNativeQuery("CREATE TABLE IF NOT EXISTS users " +
-                    "(id BIGINT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255), last_name VARCHAR(255), age INT)").executeUpdate();
+                    "(id BIGINT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255), last_name VARCHAR(255), age INT)")
+                    .executeUpdate();
             transaction.commit();
             System.out.println("Create table");
-        } catch (HibernateException e) {
-            e.printStackTrace();
-            if (transaction != null) {
-                transaction.rollback();
-            }
-        } finally {
-            session.close();
         }
-    }
-
+        catch(HibernateException e) {
+            e.printStackTrace();
+        }
+        }
+//
+//        Session session = sessionFactory.openSession();
+//        Transaction transaction = session.beginTransaction();
+//        try {
+//            session.createNativeQuery("CREATE TABLE IF NOT EXISTS users " +
+//                    "(id BIGINT PRIMARY KEY AUTO_INCREMENT, name VARCHAR(255), last_name VARCHAR(255), age INT)").executeUpdate();
+//            transaction.commit();
+//            System.out.println("Create table");
+//        } catch (HibernateException e) {
+//            e.printStackTrace();
+//            if (transaction != null) {
+//                transaction.rollback();
+//            }
+//        } finally {
+//            session.close();
+//        }
     @Override
     public void dropUsersTable() {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = session.beginTransaction();
-        try {
+
+        try(Session session = sessionFactory.openSession()){
+            Transaction transaction = session.beginTransaction();
             session.createNativeQuery("DROP TABLE IF EXISTS users").executeUpdate();
             transaction.commit();
-            System.out.println("Drop table");
-        } catch (HibernateException e) {
-            e.printStackTrace();
-            if (transaction != null) {
-                transaction.rollback();
-            }
-        } finally {
-            session.close();
+            System.out.println("DROP TABLE");
         }
+        catch(HibernateException e){
+            e.printStackTrace();
+        }
+//        Session session = sessionFactory.openSession();
+//        Transaction transaction = session.beginTransaction();
+//        try {
+//            session.createNativeQuery("DROP TABLE IF EXISTS users").executeUpdate();
+//            transaction.commit();
+//            System.out.println("Drop table");
+//        } catch (HibernateException e) {
+//            e.printStackTrace();
+//            if (transaction != null) {
+//                transaction.rollback();
+//            }
+//        } finally {
+//            session.close();
+//        }
     }
 
     @Override
