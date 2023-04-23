@@ -31,33 +31,22 @@ public class Main {
 //        userService.cleanUsersTable();
 //        System.out.println("***************");
 //        userService.dropUsersTable();
-
-
-
-
-
-
-
-
-
-
-
-
+//*************************************************************************************************************
         userService1.createUsersTable();
         System.out.println("***************");
-//        userService1.saveUser("Tom", "Ivanov", (byte)34);
-//        userService1.saveUser("Ivan", "Matrenin", (byte)45);
-//        userService1.saveUser("Tom", "Hanks", (byte)66);
-//        userService1.saveUser("Jim", "Curry", (byte)56);
-//        userService1.saveUser("Jim", "Carrey", (byte)61);
-//        System.out.println("***************");
-//        userService1.removeUserById(3);
-//        System.out.println("***************");
-//        userService1.getAllUsers();
-//        System.out.println("***************");
-//        userService1.cleanUsersTable();
-//        System.out.println("***************");
-//        userService1.dropUsersTable();
+        userService1.saveUser("Tom", "Ivanov", (byte)34);
+        userService1.saveUser("Ivan", "Matrenin", (byte)45);
+        userService1.saveUser("Tom", "Hanks", (byte)66);
+        userService1.saveUser("Jim", "Curry", (byte)56);
+        userService1.saveUser("Jim", "Carrey", (byte)61);
+        System.out.println("***************");
+        userService1.removeUserById(3);
+        System.out.println("***************");
+        userService1.getAllUsers();
+        System.out.println("***************");
+        userService1.cleanUsersTable();
+        System.out.println("***************");
+        userService1.dropUsersTable();
 
 
 
